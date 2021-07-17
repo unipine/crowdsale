@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/xsubject/crowdsale-core/issues"
   },
-  "homepage": "https://github.com/xsubject/crowdsale-core#readme"
+  "homepage": "https://github.com/xsubject/crowdsale-core#readme",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.4.1"
+  }
 }
