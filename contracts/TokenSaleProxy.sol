@@ -19,6 +19,6 @@ contract TokenSaleProxy {
         if(balance > 0) {
             tsi.token.transfer(address(ts), balance);
         }
-        ts.buyToken{value: msg.value}(1, msg.sender);
+        ts.buyToken{value: msg.value}(saleId, msg.sender);
     }
 }

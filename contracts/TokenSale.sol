@@ -10,7 +10,9 @@ import "./TokenSaleInfo.sol";
 contract TokenSale is Ownable {
     event PurchasedToken(
         uint saleId,
-        IERC20 token
+        IERC20 token,
+        uint256 inAmount,
+        uint256 outAmount
     );
 
     event TokenSaleCreated(
@@ -73,9 +75,11 @@ contract TokenSale is Ownable {
         amount = amount.sub(amount.div(100));
 
         _info[saleId].collector.transfer(amount);
-        teamCollector.transfer(address(this).balance);
+        emit PurchasedToken(saleId, _info[saleId].token, msg.value, tokens);
+    }
 
-        emit PurchasedToken(saleId, _info[saleId].token);
+    function withdraw() external {
+        teamCollector.transfer(address(this).balance);
     }
 
     function withdrawToken(uint saleId, uint256 amount, address recipient) external {
